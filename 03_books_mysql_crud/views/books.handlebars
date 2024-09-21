@@ -1,0 +1,10 @@
+<div class="container">
+    <ul class="list-content">
+        {{#each books}}
+            <li>
+                <h3><a href="/book/{{this.id}}">{{this.title}}</a></h3>
+                <p>ISBN {{this.id}} - PAGES: {{this.pageqty}}</p>
+            </li>
+        {{/each}}
+    </ul>
+</div>
