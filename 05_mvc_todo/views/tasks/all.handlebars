@@ -1,0 +1,39 @@
+<div class="row">
+    <div class="col-md-6 offset-md-3">
+        <h2>Tasks</h2>
+        
+        <table class="table">
+        <thead>
+            <tr>
+                <th scope="col">ID</th>
+                <th scope="col">Title</th>
+                <th scope="col">Description</th>
+                <th scope="col">Is done?</th>
+                <th scope="col"></th>
+            </tr>
+        </thead>
+        <tbody>
+            {{#each tasks}}
+                <tr>    
+                    <td>{{this.id}}</td>
+                    <td>{{this.title}}</td>
+                    <td>{{this.description}}</td>
+                    <td><a href="/tasks/toggleStatus/{{this.id}}" style="font-size: 1.5em;">{{#if this.isDone}}<i class="bi bi-check-square"></i></a>{{else}}<i class="bi bi-square"></i>{{/if}}</a></td>
+                    <td>
+                        <a href="/tasks/add/{{this.id}}" style="font-size: 1.5em;"><i class="bi bi-pencil-square"></i></a>
+                        <a href="/tasks/remove/{{this.id}}" style="font-size: 1.5em;"><i class="bi bi-dash-square"></i></a>
+                    </td>
+                </tr>
+            {{/each}}
+        </tbody>
+        <tfoot>
+            <tr>
+                <td>
+                    
+                </td>
+            </tr>
+        </tfoot>
+        </table>
+        <a href="/tasks/add"><i class="bi bi-plus-circle-fill" style="font-size: 2.5em;"></i></a>
+    </div>
+</div>
