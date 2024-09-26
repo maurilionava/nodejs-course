@@ -1,0 +1,49 @@
+<div class="container">
+    <div class="col-4">
+        <form class="d-flex" role="search">
+            <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
+            <button class="btn btn-outline-success" type="submit">Search</button>
+        </form>
+    </div>
+
+    <table class="table table-hover">
+    <thead>
+        <tr>
+        <th scope="col">ID</th>
+        <th scope="col">Name</th>
+        <th scope="col">Occupation</th>
+        <th scope="col">Newsletter</th>
+        <th scope="col">Street</th>
+        <th scope="col">Number</th>
+        <th scope="col">City</th>
+        <th scope="col"> </th>
+        </tr>
+    </thead>
+    <tbody>
+        {{#each users}}
+            <tr>
+                <th scope="row">{{this.id}}</th>
+                <td>{{this.name}}</td>
+                <td>{{this.occupation}}</td>
+                <td>{{this.newsletter}}</td>
+                {{#each this.Addresses}}
+                    <td>{{this.street}}</td>
+                    <td>{{this.number}}</td>
+                    <td>{{this.city}}</td>
+                {{/each}}
+                <td class="text-center">
+                    <a class="link-light" href="/users/{{this.id}}"><button class="btn btn-primary" type="button"><i class="bi bi-zoom-in"></i></button></a>
+                    <form class="d-inline" action="/users/edit" method="POST">
+                        <input type="hidden" name="id" value="{{this.id}}">
+                        <button class="btn btn-warning" type="submit"><i class="bi bi-wrench-adjustable"></i></button>
+                    </form>
+                    <form class="d-inline" action="/users/remove" method="POST">
+                        <input type="hidden" name="id" value="{{this.id}}">
+                        <button class="btn btn-danger" type="submit"><i class="bi bi-trash3"></i></button>
+                    </form>
+                </td>
+            </tr>
+        {{/each}}
+    </tbody>
+    </table>
+</div>

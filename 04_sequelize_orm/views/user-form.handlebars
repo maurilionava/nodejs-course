@@ -1,0 +1,51 @@
+<div class="container-md">
+    <h3 class="display-3 text-center">{{#if user.id}}Edit{{else}}New{{/if}} User</h1>
+    <form action="/users/save" method="POST">
+        <input type="hidden" name="id" value="{{user.id}}">
+        <div class="mb-3">
+            <label for="name" class="form-label">Full Name</label>
+            <input type="text" class="form-control" id="name" name="name" value="{{user.name}}" aria-describedby="nameHelp">
+            <div id="nameHelp" class="form-text">We'll never share your personal data with anyone else.</div>
+        </div>
+        <div class="mb-3">
+            <label for="occupation" class="form-label">Occupation</label>
+            <input type="text" class="form-control" id="occupation" name="occupation" value="{{user.occupation}}">
+        </div>
+        
+        {{#if user.id}}
+            {{#each user.Addresses}}
+                <div class="mb-3">
+                    <label for="street" class="form-label">Street</label>
+                    <input type="text" class="form-control" id="street" name="street" value="{{this.street}}">
+                </div>
+                <div class="mb-3">
+                    <label for="number" class="form-label">Number</label>
+                    <input type="text" class="form-control" id="number" name="number" value="{{this.number}}">
+                </div>
+                <div class="mb-3">
+                    <label for="city" class="form-label">City</label>
+                    <input type="text" class="form-control" id="city" name="city" value="{{this.city}}">
+                </div>
+            {{/each}}
+        {{else}}
+            <div class="mb-3">
+                <label for="street" class="form-label">Street</label>
+                <input type="text" class="form-control" id="street" name="street" value="{{this.street}}">
+            </div>
+            <div class="mb-3">
+                <label for="number" class="form-label">Number</label>
+                <input type="text" class="form-control" id="number" name="number" value="{{this.number}}">
+            </div>
+            <div class="mb-3">
+                <label for="city" class="form-label">City</label>
+                <input type="text" class="form-control" id="city" name="city" value="{{this.city}}">
+            </div>
+        {{/if}}
+        
+        <div class="mb-3 form-check">
+            <input type="checkbox" class="form-check-input" id="newsletter" name="newsletter">
+            <label class="form-check-label" for="newsletter">Newsletter</label>
+        </div>
+        <button type="submit" class="btn btn-primary">Submit</button>
+    </form>
+</div>

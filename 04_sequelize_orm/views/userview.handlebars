@@ -1,0 +1,25 @@
+<div class="container">
+    <div class="card text-center">
+        <div class="card-header">
+            User Details
+        </div>
+        <div class="card-body">
+            <h2 class="card-title">{{user.name}}</h2>
+            <h4 class="card-text">{{user.occupation}}</h4>
+            {{!-- <p class="card-text">{{user.newsletter}}</p> --}}
+            {{#each user.Addresses}}
+                <p class="card-text">Address: {{this.street}} - {{this.number}} - {{this.city}}</p>
+            {{/each}}
+            <div>
+                <form class="d-inline" action="/users/edit" method="POST">
+                    <input type="hidden" name="id" value="{{user.id}}">
+                    <button class="btn btn-warning" type="submit"><i class="bi bi-wrench-adjustable"></i></button>
+                </form>
+                <form class="d-inline" action="/users/remove" method="POST">
+                    <input type="hidden" name="id" value="{{user.id}}">
+                    <button class="btn btn-danger" type="submit"><i class="bi bi-trash3"></i></button>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
